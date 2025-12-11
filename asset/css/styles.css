@@ -1,0 +1,456 @@
+/* ==========================================
+   CV CARLOS JEREZ - ESTILOS MODERNOS PASTEL
+   ========================================== */
+
+/* Reset y Variables */
+:root {
+    --primary: #0d6efd;
+    --pastel-blue: #E3F2FD;
+    --pastel-pink: #F8E6F5;
+    --pastel-yellow: #FFF9E6;
+    --dark: #2c3e50;
+    --light: #f8f9fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==========================================
+   HERO SECTION MODERNA CON FONDO PASTEL
+   ========================================== */
+
+.hero-modern {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+/* Fondo con Gradiente Pastel Suave */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        #E3F2FD 0%,
+        #F3E5F5 50%,
+        #FFF9E6 100%);
+    z-index: 0;
+}
+
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(227, 242, 253, 0.5) 0%, 
+        rgba(248, 229, 245, 0.5) 100%);
+    animation: bgShift 10s ease infinite alternate;
+}
+
+@keyframes bgShift {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Contenedor Principal */
+.hero-modern .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* ==========================================
+   FOTO DE PERFIL - MÁS PEQUEÑA Y REDONDA
+   ========================================== */
+
+.photo-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+}
+
+.hero-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(102, 126, 234, 0.2);
+    box-shadow: 
+        0 10px 30px rgba(102, 126, 234, 0.2),
+        0 0 40px rgba(227, 242, 253, 0.8);
+    transition: all 0.4s ease;
+    background: white;
+}
+
+.hero-photo:hover {
+    transform: scale(1.08);
+    box-shadow: 
+        0 15px 40px rgba(102, 126, 234, 0.3),
+        0 0 60px rgba(227, 242, 253, 1);
+    border-color: rgba(102, 126, 234, 0.4);
+}
+
+/* ==========================================
+   REDES SOCIALES
+   ========================================== */
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    color: #667eea;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+    color: #667eea;
+    border-color: #667eea;
+}
+
+/* ==========================================
+   CONTENIDO DEL HERO - TEXTO OSCURO
+   ========================================== */
+
+.hero-text {
+    color: var(--dark);
+}
+
+.hero-text h1 {
+    color: var(--dark);
+}
+
+.hero-text h2 {
+    color: #667eea;
+}
+
+.hero-text .lead {
+    color: #5a6c7d;
+}
+
+/* Badge Disponible */
+.badge-disponible {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(102, 126, 234, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    color: #667eea;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    font-weight: 500;
+}
+
+.dot-green {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #4CAF50;
+    box-shadow: 0 0 10px #4CAF50;
+    animation: pulse-dot 2s ease infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Texto con Gradiente */
+.text-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ==========================================
+   SCROLL INDICATOR
+   ========================================== */
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-indicator:hover {
+    opacity: 1;
+}
+
+.scroll-indicator .mouse {
+    width: 26px;
+    height: 40px;
+    border: 2px solid #667eea;
+    border-radius: 15px;
+    position: relative;
+}
+
+.scroll-indicator .wheel {
+    width: 4px;
+    height: 8px;
+    background: #667eea;
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll-wheel 1.5s ease-in-out infinite;
+}
+
+@keyframes scroll-wheel {
+    0%, 100% {
+        top: 8px;
+        opacity: 1;
+    }
+    50% {
+        top: 20px;
+        opacity: 0.5;
+    }
+}
+
+.scroll-indicator span {
+    font-size: 0.75rem;
+    color: #667eea;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ==========================================
+   STATS BOXES
+   ========================================== */
+
+.stat-box {
+    background: white;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+}
+
+.stat-box:hover {
+    background: rgba(227, 242, 253, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+}
+
+.stat-num {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #5a6c7d;
+    margin: 0;
+}
+
+/* ==========================================
+   CONTACTO INFO
+   ========================================== */
+
+.contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.contact-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #5a6c7d;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    transition: all 0.3s ease;
+}
+
+.contact-tag:hover {
+    background: rgba(227, 242, 253, 0.5);
+    border-color: #667eea;
+}
+
+.contact-tag i {
+    color: #667eea;
+}
+
+/* ==========================================
+   BOTONES HERO
+   ========================================== */
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hero-buttons .btn {
+    font-weight: 500;
+    padding: 12px 28px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.hero-buttons .btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+    color: white;
+}
+
+.hero-buttons .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+}
+
+.hero-buttons .btn-outline-light {
+    border: 2px solid #667eea;
+    background: white;
+    color: #667eea;
+}
+
+.hero-buttons .btn-outline-light:hover {
+    background: #667eea;
+    border-color: #667eea;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 991px) {
+    .photo-wrapper {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .contact-row {
+        justify-content: center;
+    }
+    
+    /* Ocultar scroll indicator en tablets y móviles */
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .photo-wrapper {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    
+    .stat-num {
+        font-size: 1.5rem;
+    }
+}
+
+/* ==========================================
+   SECCIONES GENERALES
+   ========================================== */
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 15px auto 0;
+}
+
+/* ==========================================
+   CARDS Y ELEMENTOS ADICIONALES
+   ========================================== */
+
+.card {
+    border: none;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
+}
