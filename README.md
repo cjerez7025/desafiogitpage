@@ -199,68 +199,9 @@ desafiogitpage/
 │   │   └── captura-portafolio.png
 │   └── (otros recursos)
 ├── README.md               # Este archivo
-└── DEPLOYMENT.md           # Guía de despliegue
+
 ```
 
----
-
-## 🛠️ Instalación y Uso Local
-
-### Prerrequisitos
-
-- Git instalado en tu sistema
-- Navegador web moderno
-- Editor de código (recomendado: VS Code)
-
-### Pasos para clonar y ejecutar
-
-```bash
-# 1. Clonar el repositorio
-git clone https://github.com/cjerez7025/desafiogitpage.git
-
-# 2. Navegar al directorio
-cd desafiogitpage
-
-# 3. Abrir en el navegador
-# Opción A: Abrir index.html directamente
-# Opción B: Usar Live Server en VS Code
-# Opción C: Servidor local simple con Python
-python -m http.server 8000
-```
-
-Luego visita: `http://localhost:8000`
-
----
-
-## 🚀 Despliegue en GitHub Pages
-
-### Configuración Realizada
-
-1. **Repositorio público** creado en GitHub
-2. **Rama main** configurada como fuente
-3. **GitHub Pages activado** en Settings → Pages
-4. **Dominio personalizado** (opcional): `cjerez7025.github.io/desafiogitpage`
-
-### Comandos Git Utilizados
-
-```bash
-# Inicializar repositorio
-git init
-
-# Agregar archivos
-git add .
-
-# Commit inicial
-git commit -m "Initial commit: CV y Portafolio completos"
-
-# Configurar remote
-git remote add origin https://github.com/cjerez7025/desafiogitpage.git
-
-# Subir cambios
-git push -u origin main
-```
-
----
 
 ## 🤝 Trabajo Colaborativo
 
@@ -283,13 +224,6 @@ git commit -m "Mejora accesibilidad: agrega atributos alt"
 git push origin mejoras-accesibilidad
 ```
 
-#### Pull Request (opcional)
-- Desde el fork, crear Pull Request al repositorio original
-- Describir los cambios realizados
-- Esperar revisión del propietario
-
----
-
 ## 📚 Características Implementadas
 
 ### CV (index.html)
@@ -309,51 +243,8 @@ git push origin mejoras-accesibilidad
 - ✅ Diseño en grid responsive
 - ✅ Navegación integrada
 
-### Extras
-- ✅ Favicon personalizado
-- ✅ Meta tags para SEO
-- ✅ Optimización de imágenes
-- ✅ Código HTML/CSS validado
-- ✅ Compatibilidad cross-browser
 
----
 
-## 🧪 Validación y Testing
-
-### Herramientas Utilizadas
-
-| Herramienta | Propósito | Resultado |
-|-------------|-----------|-----------|
-| [W3C HTML Validator](https://validator.w3.org/) | Validación HTML5 | ✅ Passed |
-| [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) | Validación CSS3 | ✅ Passed |
-| [Lighthouse](https://developers.google.com/web/tools/lighthouse) | Performance & SEO | ✅ 90+ Score |
-| Responsive Design Mode | Prueba móvil | ✅ Responsive |
-
----
-
-## 📖 Aprendizajes Clave
-
-### Habilidades Técnicas Desarrolladas
-
-- 🎯 Estructura semántica de HTML5
-- 🎨 Estilos avanzados con CSS3
-- 📱 Diseño responsive con Bootstrap
-- 🔧 Control de versiones con Git
-- 🤝 Trabajo colaborativo en GitHub
-- 🚀 Despliegue con GitHub Pages
-- ♿ Principios de accesibilidad web
-
-### Conceptos de Git/GitHub Aplicados
-
-- Fork de repositorios
-- Commits descriptivos
-- Push y Pull
-- Gestión de branches
-- Resolución de conflictos
-- Pull Requests
-- GitHub Pages deployment
-
----
 
 ## 📝 Checklist de Verificación
 
@@ -373,30 +264,6 @@ git push origin mejoras-accesibilidad
 - [x] Fechas correctas
 - [x] Usuario aparece en commits
 
----
-
-## 🔮 Próximos Pasos y Mejoras Futuras
-
-### Funcionalidades Planeadas
-
-- [ ] Agregar JavaScript para interactividad
-- [ ] Formulario de contacto funcional
-- [ ] Modo oscuro/claro
-- [ ] Animaciones con CSS/JS
-- [ ] Blog integrado
-- [ ] Sistema de comentarios
-- [ ] Analytics con Google Analytics
-- [ ] Optimización avanzada de performance
-
-### Tecnologías a Incorporar
-
-- React o Vue.js para componentes
-- SASS/SCSS para CSS avanzado
-- API de GitHub para proyectos dinámicos
-- CI/CD con GitHub Actions
-
----
-
 ## 👨‍💻 Autor
 
 **Carlos Alberto Jerez Barrientos**
@@ -411,47 +278,5 @@ git push origin mejoras-accesibilidad
 [![Email](https://img.shields.io/badge/-Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:jerezcarlos70@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/carlosjerez)
 
----
-
-## 📄 Licencia
-
-Este proyecto es de código abierto y está disponible bajo la [Licencia MIT](LICENSE).
-
----
-
-## 🙏 Agradecimientos
-
-- **Desafío Latam** - Por la estructura del bootcamp
-- **Compañeros de curso** - Por la colaboración en forks
-- **Comunidad GitHub** - Por las mejores prácticas
-- **Bootstrap Team** - Por el framework CSS
-
----
-
-## 📚 Recursos y Referencias
-
-### Documentación Oficial
-- [MDN Web Docs](https://developer.mozilla.org/) - HTML, CSS, JavaScript
-- [Bootstrap Documentation](https://getbootstrap.com/docs/) - Framework CSS
-- [GitHub Docs](https://docs.github.com/) - Git y GitHub Pages
-
-### Tutoriales Utilizados
-- [Git - La Guía Sencilla](https://rogerdudler.github.io/git-guide/index.es.html)
-- [GitHub Pages Tutorial](https://pages.github.com/)
-- [HTML & CSS Best Practices](https://www.w3schools.com/)
-
----
-
-<div align="center">
-
-## ⭐ Si este proyecto te fue útil, ¡dale una estrella en GitHub!
-
-### 🚀 Visita el sitio en vivo: [cjerez7025.github.io/desafiogitpage](https://cjerez7025.github.io/desafiogitpage/)
-
----
-
-**Desarrollado con ❤️ por Carlos Jerez**
-
-*Última actualización: Diciembre 2025*
 
 </div>
