@@ -1,15 +1,22 @@
 /* ==========================================
-   CV CARLOS JEREZ - ESTILOS MODERNOS PASTEL
+   CV CARLOS JEREZ - ESTILOS MODERNOS MEJORADOS
    ========================================== */
 
 /* Reset y Variables */
 :root {
-    --primary: #0d6efd;
+    --primary: #667eea;
+    --primary-dark: #5568d3;
+    --secondary: #764ba2;
     --pastel-blue: #E3F2FD;
     --pastel-pink: #F8E6F5;
     --pastel-yellow: #FFF9E6;
     --dark: #2c3e50;
     --light: #f8f9fa;
+    --white: #ffffff;
+    --text-muted: #5a6c7d;
+    --success: #4CAF50;
+    --warning: #FFC107;
+    --info: #17a2b8;
 }
 
 * {
@@ -29,7 +36,7 @@ html {
 }
 
 /* ==========================================
-   HERO SECTION MODERNA CON FONDO PASTEL
+   HERO SECTION MODERNA CON IMAGEN DE FONDO
    ========================================== */
 
 .hero-modern {
@@ -40,20 +47,31 @@ html {
     align-items: center;
 }
 
-/* Fondo con Gradiente Pastel Suave */
+/* Fondo con Imagen + Gradiente Overlay */
 .hero-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 0;
+    
+    /* OPCIÓN 1: Gradiente Pastel Animado (actual) */
     background: linear-gradient(135deg, 
         #E3F2FD 0%,
-        #F3E5F5 50%,
-        #FFF9E6 100%);
-    z-index: 0;
+        #F3E5F5 35%,
+        #FFF9E6 70%,
+        #E8F5E9 100%);
+    
+    /* OPCIÓN 2: Imagen de fondo (descomentar para usar)*/
+    background-image: url('../img/hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
 }
 
+/* Overlay para mejorar legibilidad del texto */
 .hero-bg::before {
     content: '';
     position: absolute;
@@ -61,32 +79,76 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, 
-        rgba(227, 242, 253, 0.5) 0%, 
-        rgba(248, 229, 245, 0.5) 100%);
-    animation: bgShift 10s ease infinite alternate;
+    background: linear-gradient(135deg, 
+        rgba(227, 242, 253, 0.85) 0%, 
+        rgba(243, 229, 245, 0.85) 50%,
+        rgba(255, 249, 230, 0.85) 100%);
+    animation: bgShift 8s ease-in-out infinite alternate;
+    z-index: 1;
 }
 
-@keyframes bgShift {
-    0% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
-
-/* Contenedor Principal */
-.hero-modern .container {
-    position: relative;
+/* Si usas imagen, agrega este overlay oscuro para mejor contraste */
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Descomenta si usas imagen de fondo
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(2px);
+    */
     z-index: 2;
 }
 
+@keyframes bgShift {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.9; }
+}
+
+/* Contenedor Principal */
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
 /* ==========================================
-   FOTO DE PERFIL - MÁS PEQUEÑA Y REDONDA
+   FOTO DE PERFIL - PROFESIONAL Y ELEGANTE
    ========================================== */
 
 .photo-wrapper {
     position: relative;
-    width: 180px;
-    height: 180px;
-    margin: 0 auto;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 30px;
+}
+
+/* Círculo decorativo animado detrás de la foto */
+.photo-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    opacity: 0.15;
+    animation: pulse-ring 3s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes pulse-ring {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.15;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 0.25;
+    }
 }
 
 .hero-photo {
@@ -94,129 +156,462 @@ html {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid rgba(102, 126, 234, 0.2);
+    border: 6px solid var(--white);
     box-shadow: 
-        0 10px 30px rgba(102, 126, 234, 0.2),
-        0 0 40px rgba(227, 242, 253, 0.8);
-    transition: all 0.4s ease;
-    background: white;
+        0 10px 40px rgba(102, 126, 234, 0.25),
+        0 0 0 12px rgba(227, 242, 253, 0.4),
+        inset 0 0 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    background: var(--white);
+    position: relative;
+    z-index: 2;
 }
 
 .hero-photo:hover {
-    transform: scale(1.08);
+    transform: scale(1.05) rotate(3deg);
     box-shadow: 
-        0 15px 40px rgba(102, 126, 234, 0.3),
-        0 0 60px rgba(227, 242, 253, 1);
-    border-color: rgba(102, 126, 234, 0.4);
+        0 20px 60px rgba(102, 126, 234, 0.35),
+        0 0 0 16px rgba(227, 242, 253, 0.6),
+        inset 0 0 30px rgba(0, 0, 0, 0.08);
+    border-color: rgba(102, 126, 234, 0.3);
 }
 
 /* ==========================================
-   REDES SOCIALES
+   REDES SOCIALES - MEJORADAS
    ========================================== */
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
-.social-btn {
-    display: flex;
+.social-icon {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background: rgba(102, 126, 234, 0.1);
+    background: var(--white);
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(102, 126, 234, 0.3);
-    color: #667eea;
-    font-size: 1.2rem;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    color: var(--primary);
+    font-size: 1.3rem;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15);
+    position: relative;
+    overflow: hidden;
 }
 
-.social-btn:hover {
-    background: rgba(102, 126, 234, 0.2);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
-    color: #667eea;
-    border-color: #667eea;
+.social-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+    z-index: -1;
+}
+
+.social-icon:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.35);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+/* Colores específicos por red social */
+.social-icon[title*="LinkedIn"]:hover {
+    border-color: #0077b5;
+}
+
+.social-icon[title*="LinkedIn"]:hover::before {
+    background: #0077b5;
+}
+
+.social-icon[title*="GitHub"]:hover {
+    border-color: #333;
+}
+
+.social-icon[title*="GitHub"]:hover::before {
+    background: #333;
+}
+
+.social-icon[title*="email" i]:hover {
+    border-color: #EA4335;
+}
+
+.social-icon[title*="email" i]:hover::before {
+    background: #EA4335;
+}
+
+.social-icon[title*="teléfono" i]:hover,
+.social-icon[title*="Llamar" i]:hover {
+    border-color: var(--success);
+}
+
+.social-icon[title*="teléfono" i]:hover::before,
+.social-icon[title*="Llamar" i]:hover::before {
+    background: var(--success);
 }
 
 /* ==========================================
-   CONTENIDO DEL HERO - TEXTO OSCURO
+   CONTENIDO DEL HERO - TEXTO
    ========================================== */
 
-.hero-text {
+.hero-text-content {
     color: var(--dark);
-}
-
-.hero-text h1 {
-    color: var(--dark);
-}
-
-.hero-text h2 {
-    color: #667eea;
-}
-
-.hero-text .lead {
-    color: #5a6c7d;
 }
 
 /* Badge Disponible */
-.badge-disponible {
+.hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background: rgba(102, 126, 234, 0.1);
+    gap: 10px;
+    padding: 10px 20px;
+    background: var(--white);
     backdrop-filter: blur(10px);
     border-radius: 50px;
     font-size: 0.9rem;
-    color: #667eea;
-    border: 2px solid rgba(102, 126, 234, 0.3);
-    font-weight: 500;
+    color: var(--primary);
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+    animation: float 3s ease-in-out infinite;
 }
 
-.dot-green {
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.badge-dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #4CAF50;
-    box-shadow: 0 0 10px #4CAF50;
-    animation: pulse-dot 2s ease infinite;
+    background: var(--success);
+    box-shadow: 0 0 15px var(--success);
+    animation: pulse-dot 2s ease-in-out infinite;
 }
 
 @keyframes pulse-dot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.7; 
+        transform: scale(1.2);
+    }
 }
 
-/* Texto con Gradiente */
-.text-gradient {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+/* Títulos del Hero */
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.hero-greeting {
+    font-size: 0.6em;
+    font-weight: 500;
+    color: var(--text-muted);
+    display: block;
+}
+
+.hero-name {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    display: block;
+    font-size: 1em;
+}
+
+.hero-role {
+    font-size: 0.5em;
+    font-weight: 600;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 0.8em;
+    background: var(--primary);
+    margin-left: 5px;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* Descripción */
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
 }
 
 /* ==========================================
-   SCROLL INDICATOR
+   STATS CARDS - MEJORADAS
+   ========================================== */
+
+.hero-stats {
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--white);
+    border: 2px solid rgba(102, 126, 234, 0.15);
+    border-radius: 16px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.stat-card:hover::before {
+    transform: scaleX(1);
+}
+
+.stat-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.2);
+    border-color: var(--primary);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   DATOS DE CONTACTO - BIEN VISIBLES
+   ========================================== */
+
+.hero-contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--white);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    color: var(--dark);
+    border: 2px solid rgba(102, 126, 234, 0.15);
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 12px rgba(102, 126, 234, 0.08);
+    font-weight: 500;
+}
+
+.contact-item:hover {
+    background: rgba(227, 242, 253, 0.6);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
+}
+
+.contact-item i {
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.contact-item a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: var(--primary);
+}
+
+/* ==========================================
+   BOTONES CTA - IMPRESIONANTES
+   ========================================== */
+
+.hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.btn-impressive {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+}
+
+/* Botón Primario */
+.btn-primary-impressive {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--white);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary-impressive::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+    transition: left 0.4s ease;
+    z-index: 1;
+}
+
+.btn-primary-impressive:hover::before {
+    left: 0;
+}
+
+.btn-primary-impressive:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 35px rgba(102, 126, 234, 0.4);
+    color: var(--white);
+}
+
+/* Efecto brillo */
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 30%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-25deg);
+    transition: left 0.6s ease;
+}
+
+.btn-primary-impressive:hover .btn-shine {
+    left: 120%;
+}
+
+/* Botón Secundario */
+.btn-secondary-impressive {
+    background: var(--white);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn-secondary-impressive:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 35px rgba(102, 126, 234, 0.3);
+}
+
+/* Botón Outline */
+.btn-outline-impressive {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn-outline-impressive:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 35px rgba(102, 126, 234, 0.3);
+}
+
+/* ==========================================
+   SCROLL INDICATOR - ELEGANTE
    ========================================== */
 
 .scroll-indicator {
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     z-index: 10;
     opacity: 0.7;
     transition: opacity 0.3s ease;
+    animation: float-scroll 2s ease-in-out infinite;
+}
+
+@keyframes float-scroll {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
 }
 
 .scroll-indicator:hover {
@@ -224,176 +619,228 @@ html {
 }
 
 .scroll-indicator .mouse {
-    width: 26px;
-    height: 40px;
-    border: 2px solid #667eea;
-    border-radius: 15px;
+    width: 28px;
+    height: 45px;
+    border: 3px solid var(--primary);
+    border-radius: 18px;
     position: relative;
+    background: var(--white);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
 }
 
 .scroll-indicator .wheel {
     width: 4px;
-    height: 8px;
-    background: #667eea;
+    height: 10px;
+    background: var(--primary);
     border-radius: 2px;
     position: absolute;
-    top: 8px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    animation: scroll-wheel 1.5s ease-in-out infinite;
+    animation: scroll-wheel 2s ease-in-out infinite;
 }
 
 @keyframes scroll-wheel {
     0%, 100% {
-        top: 8px;
+        top: 10px;
         opacity: 1;
     }
     50% {
-        top: 20px;
-        opacity: 0.5;
+        top: 24px;
+        opacity: 0.3;
     }
 }
 
 .scroll-indicator span {
     font-size: 0.75rem;
-    color: #667eea;
-    font-weight: 600;
+    color: var(--primary);
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 /* ==========================================
-   STATS BOXES
+   SECCIONES GENERALES
    ========================================== */
 
-.stat-box {
-    background: white;
-    border: 2px solid rgba(102, 126, 234, 0.2);
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
 }
 
-.stat-box:hover {
-    background: rgba(227, 242, 253, 0.5);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
-    border-color: #667eea;
-}
-
-.stat-num {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #667eea;
-    margin-bottom: 5px;
-}
-
-.stat-label {
-    font-size: 0.9rem;
-    color: #5a6c7d;
-    margin: 0;
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
 /* ==========================================
-   CONTACTO INFO
+   CARDS GENERALES
    ========================================== */
 
-.contact-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.contact-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    background: white;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    color: #5a6c7d;
-    border: 2px solid rgba(102, 126, 234, 0.2);
-    transition: all 0.3s ease;
-}
-
-.contact-tag:hover {
-    background: rgba(227, 242, 253, 0.5);
-    border-color: #667eea;
-}
-
-.contact-tag i {
-    color: #667eea;
-}
-
-/* ==========================================
-   BOTONES HERO
-   ========================================== */
-
-.hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.hero-buttons .btn {
-    font-weight: 500;
-    padding: 12px 28px;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-}
-
-.hero-buttons .btn-primary {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+.card {
     border: none;
-    color: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.1);
+    transition: all 0.4s ease;
+    overflow: hidden;
 }
 
-.hero-buttons .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.2);
 }
 
-.hero-buttons .btn-outline-light {
-    border: 2px solid #667eea;
-    background: white;
-    color: #667eea;
+.achievement-card {
+    background: linear-gradient(135deg, 
+        rgba(227, 242, 253, 0.5) 0%, 
+        rgba(243, 229, 245, 0.5) 100%);
+    border-radius: 12px;
+    border: 2px solid rgba(102, 126, 234, 0.1);
+    transition: all 0.3s ease;
 }
 
-.hero-buttons .btn-outline-light:hover {
-    background: #667eea;
-    border-color: #667eea;
-    color: white;
-    transform: translateY(-3px);
+.achievement-card:hover {
+    background: rgba(227, 242, 253, 0.8);
+    border-color: var(--primary);
+    transform: translateX(5px);
 }
 
 /* ==========================================
-   RESPONSIVE
+   EDUCATION CARDS
+   ========================================== */
+
+.education-card {
+    transition: all 0.4s ease;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.education-card:hover {
+    transform: translateY(-10px) rotate(1deg);
+}
+
+/* ==========================================
+   SKILL BADGES
+   ========================================== */
+
+.skill-badge {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--white);
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    border-radius: 50px;
+    font-weight: 600;
+    color: var(--dark);
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 12px rgba(102, 126, 234, 0.08);
+    text-align: center;
+}
+
+.skill-badge:hover {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--white);
+    border-color: var(--primary);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
+}
+
+/* ==========================================
+   SOFT SKILLS
+   ========================================== */
+
+.soft-skill-card {
+    background: var(--white);
+    border: 2px solid rgba(102, 126, 234, 0.1);
+    border-radius: 16px;
+    transition: all 0.4s ease;
+    box-shadow: 0 3px 15px rgba(102, 126, 234, 0.08);
+}
+
+.soft-skill-card:hover {
+    background: linear-gradient(135deg, 
+        rgba(227, 242, 253, 0.6) 0%, 
+        rgba(243, 229, 245, 0.6) 100%);
+    border-color: var(--primary);
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
    ========================================== */
 
 @media (max-width: 991px) {
+    .photo-wrapper {
+        width: 180px;
+        height: 180px;
+        margin-bottom: 25px;
+    }
+    
+    .hero-title {
+        text-align: center;
+    }
+    
+    .hero-text-content {
+        text-align: center;
+    }
+    
+    .hero-cta {
+        justify-content: center;
+    }
+    
+    .hero-contact-info {
+        justify-content: center;
+    }
+    
+    .hero-stats {
+        justify-content: center;
+    }
+    
+    .scroll-indicator {
+        display: none;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
     .photo-wrapper {
         width: 160px;
         height: 160px;
     }
     
-    .hero-text {
-        text-align: center;
+    .hero-badge {
+        font-size: 0.85rem;
+        padding: 8px 16px;
     }
     
-    .hero-buttons {
-        justify-content: center;
+    .hero-title {
+        font-size: 2rem;
     }
     
-    .contact-row {
-        justify-content: center;
+    .hero-description {
+        font-size: 1rem;
     }
     
-    /* Ocultar scroll indicator en tablets y móviles */
-    .scroll-indicator {
-        display: none;
+    .contact-item {
+        font-size: 0.85rem;
+        padding: 8px 14px;
+    }
+    
+    .btn-impressive {
+        padding: 12px 24px;
+        font-size: 0.95rem;
     }
 }
 
@@ -403,54 +850,131 @@ html {
         height: 140px;
     }
     
-    .hero-buttons .btn {
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
         width: 100%;
     }
     
-    .stat-num {
-        font-size: 1.5rem;
+    .btn-impressive {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.75rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .social-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
     }
 }
 
 /* ==========================================
-   SECCIONES GENERALES
+   UTILITIES
    ========================================== */
-
-.section-padding {
-    padding: 80px 0;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: var(--dark);
-    margin-bottom: 1rem;
-}
-
-.section-title::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    margin: 15px auto 0;
-}
-
-/* ==========================================
-   CARDS Y ELEMENTOS ADICIONALES
-   ========================================== */
-
-.card {
-    border: none;
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
-    transition: all 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
-}
 
 .bg-light {
     background-color: #f8f9fa !important;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ==========================================
+   HERO PORTAFOLIO (para portafolio.html)
+   ========================================== */
+
+.hero-section {
+    background: linear-gradient(135deg, 
+        var(--primary) 0%, 
+        var(--secondary) 100%);
+    padding: 60px 0;
+}
+
+.project-card {
+    transition: all 0.4s ease;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+}
+
+.stats-card {
+    transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px) scale(1.03);
+}
+
+/* ==========================================
+   ANIMACIONES ADICIONALES
+   ========================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* ==========================================
+   PRINT STYLES
+   ========================================== */
+
+@media print {
+    .navbar,
+    .scroll-indicator,
+    .hero-cta,
+    footer {
+        display: none !important;
+    }
+    
+    .hero-modern {
+        min-height: auto;
+        padding: 20px 0;
+    }
+    
+    .hero-bg {
+        background: white !important;
+    }
+    
+    .hero-bg::before,
+    .hero-bg::after {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
 }
